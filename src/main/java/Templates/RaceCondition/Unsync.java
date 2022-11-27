@@ -1,38 +1,37 @@
-package race_condition;
+package Templates.RaceCondition;
+
 import java.util.ArrayList;
 
-public class Sync2 {
-    private static int NOF_THREADS = 2000;
-    private int cnt = 0;
+public class Unsync {
+    private static final int NUMBER_OF_THREADS = 2000;
+    private int count = 0;
+
     private void increaseCount() {
-        // this simulates work that may be happening 
+        // this simulates work that may be happening
         // before the critical section
         try {
             Thread.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // only block the critical section
-        synchronized(this) {
-            this.cnt++;
-        }
+        this.count++;
     }
 
     protected int getCount() {
-        return this.cnt;
+        return this.count;
     }
 
     public static void main(String [] args) throws InterruptedException {
         ArrayList<Thread> threads = new ArrayList<>();
         // generate a unique instance
-        Sync2 s = new Sync2(); 
+        Unsync unsync = new Unsync();
         // generate threads
-        for (int i = 0; i < NOF_THREADS; i++) {
+        for (int i = 0; i < NUMBER_OF_THREADS; i++) {
             // each thread simply executes the increaseCount function
-            Thread incrThread = new Thread(new Runnable() {			
+            Thread incrThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    s.increaseCount();
+                    unsync.increaseCount();
                 }
             });
             // start the thread and add it into the thread list
@@ -44,6 +43,7 @@ public class Sync2 {
             threads.get(0).join();
             threads.remove(0);
         }
-        System.out.println("CNT:" + Integer.toString(s.getCount()) + "/" + Integer.toString(NOF_THREADS));
+        System.out.println("CNT:" + Integer.toString(unsync.getCount()) + "/" + Integer.toString(NUMBER_OF_THREADS));
     }
 }
+
