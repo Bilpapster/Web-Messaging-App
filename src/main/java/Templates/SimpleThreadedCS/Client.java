@@ -1,4 +1,4 @@
-package SimpleThreadedCS;
+package Templates.SimpleThreadedCS;
 
 /**
  * This is a demo client-side socket connection program for a multi-threaded client-server * architecture based on Runnable interface. The Client sends some messages to the Server * and the Server instantly sends them back to the Client (a.k.a. Echo-Server).

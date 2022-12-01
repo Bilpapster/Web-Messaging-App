@@ -1,4 +1,4 @@
-package MultiThreadedFibonacci;
+package Templates.MultiThreadedFibonacci;
 
 import java.net.*;
 import java.io.*;

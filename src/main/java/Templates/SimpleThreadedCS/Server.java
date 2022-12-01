@@ -1,4 +1,4 @@
-package SimpleThreadedCS;
+package Templates.SimpleThreadedCS;
 
 import java.io.*;
 import java.net.*;

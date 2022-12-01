@@ -1,4 +1,4 @@
-package EchoServer;
+package Templates.EchoServer;
 
 import java.net.*;
 import java.io.*;

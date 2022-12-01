@@ -1,5 +1,6 @@
-package KnockKnockServer.SingleThreaded;
+package Templates.KnockKnockServer.MultiThreaded;
 
+// MAIN
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -31,48 +32,27 @@ package KnockKnockServer.SingleThreaded;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import java.io.*;
 import java.net.*;
+import java.io.*;
 
-public class KnockKnockClient {
+public class KKMultiServer {
     public static void main(String[] args) throws IOException {
-
-        Socket kkSocket = null;
-        PrintWriter out = null;
-        BufferedReader in = null;
+        ServerSocket serverSocket = null;
+        boolean listening = true;
 
         try {
-            kkSocket = new Socket("127.0.0.1", 4444);
-            out = new PrintWriter(kkSocket.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(kkSocket.getInputStream()));
-        } catch (UnknownHostException e) {
-            System.err.println("Don't know about host: taranis.");
-            System.exit(1);
+            serverSocket = new ServerSocket(4444);
         } catch (IOException e) {
-            System.err.println("Couldn't get I/O for the connection to: taranis.");
-            System.exit(1);
+            System.err.println("Could not listen on port: 4444.");
+            System.exit(-1);
         }
 
-        BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
-        String fromServer;
-        String fromUser;
-
-        while ((fromServer = in.readLine()) != null) {
-            System.out.println("Server: " + fromServer);
-            if (fromServer.equals("Bye."))
-                break;
-
-            fromUser = stdIn.readLine();
-            if (fromUser != null) {
-                System.out.println("Client: " + fromUser);
-                out.println(fromUser);
-            }
+        while (listening) {
+            Socket clientSocket = serverSocket.accept();
+            new KKMultiServerThread(clientSocket).start();
         }
 
-        out.close();
-        in.close();
-        stdIn.close();
-        kkSocket.close();
+        serverSocket.close();
     }
 }
 
