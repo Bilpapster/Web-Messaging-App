@@ -14,7 +14,7 @@ public class TCPClient {
             DataOutputStream out = new DataOutputStream(s.getOutputStream());
             out.writeUTF(args[0]);        // UTF is a string encoding see Sn. 4.4
             String data = in.readUTF();        // read a line of data from the stream
-            System.out.println("Received: " + data);
+            System.out.println("Received from Server (echo): " + data);
         } catch (UnknownHostException e) {
             System.out.println("Socket:" + e.getMessage());
         } catch (EOFException e) {

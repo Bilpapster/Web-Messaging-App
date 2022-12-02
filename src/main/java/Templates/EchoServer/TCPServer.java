@@ -5,16 +5,14 @@ import java.io.*;
 
 public class TCPServer {
 
-
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         try {
             int serverPort = 7896; // the server port
             ServerSocket listenSocket = new ServerSocket(serverPort);
+            System.out.println("Server is ready for clients!");
             while (true) {
                 Socket clientSocket = listenSocket.accept();
-
-
-                System.out.println("Request from client" + clientSocket.getInetAddress() + "at port " + clientSocket.getPort());
+                System.out.println("Request from client" + clientSocket.getInetAddress() + " at port " + clientSocket.getPort());
                 Connection c = new Connection(clientSocket);
             }
         } catch (IOException e) {
@@ -42,8 +40,9 @@ class Connection extends Thread {
 
     public void run() {
         try {                             // an echo server
-
             String data = in.readUTF();                      // read a line of data from the stream
+            System.out.println("(Server): [" + clientSocket.getInetAddress() + ", "
+                    + clientSocket.getPort() + "]: " + data);
             out.writeUTF(data);
         } catch (EOFException e) {
             System.out.println("EOF:" + e.getMessage());

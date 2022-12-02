@@ -11,9 +11,9 @@ Templates/KnockKnockServer/SingleThreaded/KnockKnockServer.java
  Templates.KnockKnockServer.SingleThreaded.KnockKnockServer
 Templates/RMI/Squares/Server.java
  Templates.RMI.Squares.Server
-Templates/EchoServer/TCPServer.java
- Templates.EchoServer.Connection
- Templates.EchoServer.TCPServer
+Templates/SimpleThreadedCS/Server.java
+ Templates.SimpleThreadedCS.Server
+ Templates.SimpleThreadedCS.Server$ClientHandler
 Templates/KnockKnockServer/SingleThreaded/KnockKnockProtocol.java
  Templates.KnockKnockServer.SingleThreaded.KnockKnockProtocol
 Templates/KnockKnockServer/MultiThreaded/KKMultiServerThread.java
@@ -30,8 +30,8 @@ Templates/RMI/Squares/Rectangle.java
  Templates.RMI.Squares.Rectangle
 Templates/RMI/Squares/RemoteCalculator.java
  Templates.RMI.Squares.RemoteCalculator
-Templates/EchoServer/TCPClient.java
- Templates.EchoServer.TCPClient
+Templates/KnockKnockServer/SingleThreaded/KnockKnockClient.java
+ Templates.KnockKnockServer.SingleThreaded.KnockKnockClient
 Templates/RMI/Calculator/Server.java
  Templates.RMI.Calculator.Server
 Templates/RMI/Squares/Client.java
@@ -52,8 +52,8 @@ Templates/MultiThreadedFibonacci/ServerThread.java
  Templates.MultiThreadedFibonacci.ServerThread
 Templates/RMI/Calculator/RemoteCalculator.java
  Templates.RMI.Calculator.RemoteCalculator
-Templates/KnockKnockServer/SingleThreaded/KnockKnockClient.java
- Templates.KnockKnockServer.SingleThreaded.KnockKnockClient
-Templates/SimpleThreadedCS/Server.java
- Templates.SimpleThreadedCS.Server
- Templates.SimpleThreadedCS.Server$ClientHandler
+Templates/EchoServer/TCPClient.java
+ Templates.EchoServer.TCPClient
+Templates/EchoServer/TCPServer.java
+ Templates.EchoServer.Connection
+ Templates.EchoServer.TCPServer
