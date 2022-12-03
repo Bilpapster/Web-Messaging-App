@@ -4,9 +4,9 @@ Templates/RaceCondition/Sync2.java
 Templates/RaceCondition/Sync.java
  Templates.RaceCondition.Sync
  Templates.RaceCondition.Sync$1
-Templates/RaceCondition/Unsync.java
- Templates.RaceCondition.Unsync
- Templates.RaceCondition.Unsync$1
+Templates/EchoServer/TCPServer.java
+ Templates.EchoServer.Connection
+ Templates.EchoServer.TCPServer
 Templates/KnockKnockServer/SingleThreaded/KnockKnockServer.java
  Templates.KnockKnockServer.SingleThreaded.KnockKnockServer
 Templates/RMI/Squares/Server.java
@@ -54,8 +54,8 @@ Templates/RMI/Calculator/RemoteCalculator.java
  Templates.RMI.Calculator.RemoteCalculator
 Templates/EchoServer/TCPClient.java
  Templates.EchoServer.TCPClient
-Templates/EchoServer/TCPServer.java
- Templates.EchoServer.Connection
- Templates.EchoServer.TCPServer
-Templates/SimpleThreads/DemoClass.java
- Templates.SimpleThreads.DemoClass
+Templates/SimpleThreads/SimpleThreadSynchronization.java
+ Templates.SimpleThreads.SimpleThreadSynchronization
+Templates/RaceCondition/Unsynchronized.java
+ Templates.RaceCondition.Unsynchronized
+ Templates.RaceCondition.Unsynchronized$1

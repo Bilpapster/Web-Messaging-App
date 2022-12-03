@@ -1,15 +1,10 @@
 package Templates.RaceCondition;
 import java.util.ArrayList;
 
-public class Sync {
+public class SynchronizedImproved {
     private static int NUMBER_OF_THREADS = 2000;
     private int count = 0;
-    /**
-     * Everything in this function will be executed sequentially
-     * (even the Thread.sleep function)
-     * is this efficient?
-     */
-    private synchronized void increaseCount() {
+    private void increaseCount() {
         // this simulates work that may be happening
         // before the critical section
         try {
@@ -17,7 +12,10 @@ public class Sync {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        this.count++;
+        // only block the critical section
+        synchronized(this) {
+            this.count++;
+        }
     }
 
     protected int getCount() {
@@ -27,14 +25,14 @@ public class Sync {
     public static void main(String [] args) throws InterruptedException {
         ArrayList<Thread> threads = new ArrayList<>();
         // generate a unique instance
-        Sync sync = new Sync();
+        SynchronizedImproved synchronizedImproved = new SynchronizedImproved();
         // generate threads
         for (int i = 0; i < NUMBER_OF_THREADS; i++) {
             // each thread simply executes the increaseCount function
             Thread incrThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    sync.increaseCount();
+                    synchronizedImproved.increaseCount();
                 }
             });
             // start the thread and add it into the thread list
@@ -46,7 +44,7 @@ public class Sync {
             threads.get(0).join();
             threads.remove(0);
         }
-        System.out.println("CNT:" + Integer.toString(sync.getCount()) + "/" + Integer.toString(NUMBER_OF_THREADS));
+        System.out.println("CNT:" + synchronizedImproved.getCount() + "/" + NUMBER_OF_THREADS);
     }
 }
 

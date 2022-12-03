@@ -1,9 +1,11 @@
 package Templates.RaceCondition;
+
 import java.util.ArrayList;
 
-public class Sync2 {
-    private static int NUMBER_OF_THREADS = 2000;
+public class Unsynchronized {
+    private static final int NUMBER_OF_THREADS = 2000;
     private int count = 0;
+
     private void increaseCount() {
         // this simulates work that may be happening
         // before the critical section
@@ -12,10 +14,7 @@ public class Sync2 {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // only block the critical section
-        synchronized(this) {
-            this.count++;
-        }
+        this.count++;
     }
 
     protected int getCount() {
@@ -25,14 +24,14 @@ public class Sync2 {
     public static void main(String [] args) throws InterruptedException {
         ArrayList<Thread> threads = new ArrayList<>();
         // generate a unique instance
-        Sync2 sync2 = new Sync2();
+        Unsynchronized unsynchronized = new Unsynchronized();
         // generate threads
         for (int i = 0; i < NUMBER_OF_THREADS; i++) {
             // each thread simply executes the increaseCount function
             Thread incrThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    sync2.increaseCount();
+                    unsynchronized.increaseCount();
                 }
             });
             // start the thread and add it into the thread list
@@ -44,7 +43,7 @@ public class Sync2 {
             threads.get(0).join();
             threads.remove(0);
         }
-        System.out.println("CNT:" + Integer.toString(sync2.getCount()) + "/" + Integer.toString(NUMBER_OF_THREADS));
+        System.out.println("Total count:" + unsynchronized.getCount() + "/" + NUMBER_OF_THREADS);
     }
 }
 

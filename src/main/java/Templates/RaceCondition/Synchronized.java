@@ -1,12 +1,15 @@
 package Templates.RaceCondition;
-
 import java.util.ArrayList;
 
-public class Unsync {
-    private static final int NUMBER_OF_THREADS = 2000;
+public class Synchronized {
+    private static int NUMBER_OF_THREADS = 2000;
     private int count = 0;
-
-    private void increaseCount() {
+    /**
+     * Everything in this function will be executed sequentially
+     * (even the Thread.sleep function)
+     * is this efficient?
+     */
+    private synchronized void increaseCount() {
         // this simulates work that may be happening
         // before the critical section
         try {
@@ -24,14 +27,14 @@ public class Unsync {
     public static void main(String [] args) throws InterruptedException {
         ArrayList<Thread> threads = new ArrayList<>();
         // generate a unique instance
-        Unsync unsync = new Unsync();
+        Synchronized aSynchronized = new Synchronized();
         // generate threads
         for (int i = 0; i < NUMBER_OF_THREADS; i++) {
             // each thread simply executes the increaseCount function
             Thread incrThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    unsync.increaseCount();
+                    aSynchronized.increaseCount();
                 }
             });
             // start the thread and add it into the thread list
@@ -43,7 +46,7 @@ public class Unsync {
             threads.get(0).join();
             threads.remove(0);
         }
-        System.out.println("CNT:" + Integer.toString(unsync.getCount()) + "/" + Integer.toString(NUMBER_OF_THREADS));
+        System.out.println("CNT:" + Integer.toString(aSynchronized.getCount()) + "/" + Integer.toString(NUMBER_OF_THREADS));
     }
 }
 
