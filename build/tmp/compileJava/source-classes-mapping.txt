@@ -57,3 +57,5 @@ Templates/EchoServer/TCPClient.java
 Templates/EchoServer/TCPServer.java
  Templates.EchoServer.Connection
  Templates.EchoServer.TCPServer
+Templates/SimpleThreads/DemoClass.java
+ Templates.SimpleThreads.DemoClass
