@@ -18,6 +18,7 @@ public class Server {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            assert socket != null;
             if (!socket.isClosed()) socket.close();
         }
     }

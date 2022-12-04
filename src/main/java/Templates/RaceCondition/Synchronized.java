@@ -46,7 +46,7 @@ public class Synchronized {
             threads.get(0).join();
             threads.remove(0);
         }
-        System.out.println("CNT:" + Integer.toString(aSynchronized.getCount()) + "/" + Integer.toString(NUMBER_OF_THREADS));
+        System.out.println("CNT:" + aSynchronized.getCount() + "/" + NUMBER_OF_THREADS);
     }
 }
 

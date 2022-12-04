@@ -5,19 +5,19 @@ import java.io.*;
 
 public class ServerThread extends Thread {
     private Socket socket;
-    private Fibonacci fib;
+    private Fibonacci fibonacci;
     String clientIP;
 
     public ServerThread(Socket socket) {
         super();
         this.socket = socket;
         clientIP = socket.getInetAddress().getHostAddress();
-        fib = new Fibonacci();
+        fibonacci = new Fibonacci();
     }
 
     private String handleInput(String input) {
-        if (input.toLowerCase().equals("y")) {
-            String nextNumber = String.valueOf(fib.getNext());
+        if (input.equalsIgnoreCase("y")) {
+            String nextNumber = String.valueOf(fibonacci.getNext());
             return nextNumber;
         }
         return null;
@@ -31,7 +31,7 @@ public class ServerThread extends Thread {
                             socket.getInputStream()));
 
             // send the first number
-            int nextFibNumber = fib.getNext();
+            int nextFibNumber = fibonacci.getNext();
             out.println(nextFibNumber);
             while (true) {
                 String input = in.readLine();

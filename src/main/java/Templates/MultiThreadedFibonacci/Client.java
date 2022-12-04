@@ -10,7 +10,7 @@ public class Client {
         Socket socket = null;
         PrintWriter out = null;
         BufferedReader in = null;
-        ArrayList<Integer> fiboSeries = new ArrayList<Integer>();
+        ArrayList<Integer> fibonacciSeries = new ArrayList<Integer>();
 
         try {
             // the first argument is the ip address of the server
@@ -28,8 +28,8 @@ public class Client {
         String fromUser;
 
         while ((fromServer = in.readLine()) != null) {
-            fiboSeries.add(Integer.parseInt(fromServer));
-            System.out.println("Server: " + fiboSeries.toString() + ". Continue?[y/n]");
+            fibonacciSeries.add(Integer.parseInt(fromServer));
+            System.out.println("Server: " + fibonacciSeries.toString() + ". Continue?[y/n]");
             fromUser = stdIn.readLine();
             if (fromUser != null) {
                 System.out.println("Client: " + fromUser);

@@ -1,9 +1,8 @@
-Templates/RaceCondition/Sync2.java
- Templates.RaceCondition.Sync2
- Templates.RaceCondition.Sync2$1
-Templates/RaceCondition/Sync.java
- Templates.RaceCondition.Sync
- Templates.RaceCondition.Sync$1
+Templates/SimpleThreads/SimpleThreadSynchronization.java
+ Templates.SimpleThreads.SimpleThreadSynchronization
+Templates/RaceCondition/Unsynchronized.java
+ Templates.RaceCondition.Unsynchronized
+ Templates.RaceCondition.Unsynchronized$1
 Templates/EchoServer/TCPServer.java
  Templates.EchoServer.Connection
  Templates.EchoServer.TCPServer
@@ -54,8 +53,9 @@ Templates/RMI/Calculator/RemoteCalculator.java
  Templates.RMI.Calculator.RemoteCalculator
 Templates/EchoServer/TCPClient.java
  Templates.EchoServer.TCPClient
-Templates/SimpleThreads/SimpleThreadSynchronization.java
- Templates.SimpleThreads.SimpleThreadSynchronization
-Templates/RaceCondition/Unsynchronized.java
- Templates.RaceCondition.Unsynchronized
- Templates.RaceCondition.Unsynchronized$1
+Templates/RaceCondition/Synchronized.java
+ Templates.RaceCondition.Synchronized
+ Templates.RaceCondition.Synchronized$1
+Templates/RaceCondition/SynchronizedImproved.java
+ Templates.RaceCondition.SynchronizedImproved
+ Templates.RaceCondition.SynchronizedImproved$1
