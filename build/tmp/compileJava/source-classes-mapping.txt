@@ -17,8 +17,8 @@ Templates/KnockKnockServer/SingleThreaded/KnockKnockProtocol.java
  Templates.KnockKnockServer.SingleThreaded.KnockKnockProtocol
 Templates/KnockKnockServer/MultiThreaded/KKMultiServerThread.java
  Templates.KnockKnockServer.MultiThreaded.KKMultiServerThread
-Templates/RMI/Calculator/CalculatorInt.java
- Templates.RMI.Calculator.CalculatorInt
+Templates/MultiThreadedFibonacci/ServerThread.java
+ Templates.MultiThreadedFibonacci.ServerThread
 Templates/SimpleThreadedCS/Client.java
  Templates.SimpleThreadedCS.Client
 Templates/MultiThreadedFibonacci/Fibonacci.java
@@ -31,31 +31,31 @@ Templates/RMI/Squares/RemoteCalculator.java
  Templates.RMI.Squares.RemoteCalculator
 Templates/KnockKnockServer/SingleThreaded/KnockKnockClient.java
  Templates.KnockKnockServer.SingleThreaded.KnockKnockClient
-Templates/RMI/Calculator/Server.java
- Templates.RMI.Calculator.Server
+Templates/MultiThreadedFibonacci/Server.java
+ Templates.MultiThreadedFibonacci.Server
 Templates/RMI/Squares/Client.java
  Templates.RMI.Squares.Client
 Templates/KnockKnockServer/MultiThreaded/KnockKnockClient.java
  Templates.KnockKnockServer.MultiThreaded.KnockKnockClient
 Templates/KnockKnockServer/MultiThreaded/KnockKnockProtocol.java
  Templates.KnockKnockServer.MultiThreaded.KnockKnockProtocol
-Templates/MultiThreadedFibonacci/Server.java
- Templates.MultiThreadedFibonacci.Server
-Templates/MultiThreadedFibonacci/Client.java
- Templates.MultiThreadedFibonacci.Client
-Templates/RMI/Calculator/Client.java
- Templates.RMI.Calculator.Client
-Templates/RMI/Squares/CalculatorInt.java
- Templates.RMI.Squares.CalculatorInt
-Templates/MultiThreadedFibonacci/ServerThread.java
- Templates.MultiThreadedFibonacci.ServerThread
-Templates/RMI/Calculator/RemoteCalculator.java
- Templates.RMI.Calculator.RemoteCalculator
+Templates/RaceCondition/SynchronizedImproved.java
+ Templates.RaceCondition.SynchronizedImproved
+ Templates.RaceCondition.SynchronizedImproved$1
 Templates/EchoServer/TCPClient.java
  Templates.EchoServer.TCPClient
 Templates/RaceCondition/Synchronized.java
  Templates.RaceCondition.Synchronized
  Templates.RaceCondition.Synchronized$1
-Templates/RaceCondition/SynchronizedImproved.java
- Templates.RaceCondition.SynchronizedImproved
- Templates.RaceCondition.SynchronizedImproved$1
+Templates/RMI/Squares/CalculatorInt.java
+ Templates.RMI.Squares.CalculatorInt
+Templates/MultiThreadedFibonacci/Client.java
+ Templates.MultiThreadedFibonacci.Client
+Templates/RMI/Calculator/CalculatorInt.java
+ Templates.RMI.Calculator.CalculatorInt
+Templates/RMI/Calculator/Client.java
+ Templates.RMI.Calculator.Client
+Templates/RMI/Calculator/RemoteCalculator.java
+ Templates.RMI.Calculator.RemoteCalculator
+Templates/RMI/Calculator/Server.java
+ Templates.RMI.Calculator.Server

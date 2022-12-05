@@ -8,19 +8,19 @@ public class RemoteCalculator extends UnicastRemoteObject implements CalculatorI
         super();
     }
 
-    public double add(double a, double b) throws RemoteException {
+    public double addition(double a, double b) throws RemoteException {
         return a + b;
     }
 
-    public double sub(double a, double b) throws RemoteException {
+    public double subtraction(double a, double b) throws RemoteException {
         return a - b;
     }
 
-    public double mul(double a, double b) throws RemoteException {
+    public double multiplication(double a, double b) throws RemoteException {
         return a * b;
     }
 
-    public double div(double a, double b) throws RemoteException {
+    public double division(double a, double b) throws RemoteException {
         return a / b;
     }
 }
