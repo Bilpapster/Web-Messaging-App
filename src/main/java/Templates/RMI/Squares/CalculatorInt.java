@@ -4,11 +4,11 @@ import java.rmi.*;
 
 public interface CalculatorInt extends Remote {
 
-    public int add(Rectangle a, Rectangle b) throws RemoteException;
+    public int areaAddition(Rectangle a, Rectangle b) throws RemoteException;
 
-    public int sub(Rectangle a, Rectangle b) throws RemoteException;
+    public int areaSubtraction(Rectangle a, Rectangle b) throws RemoteException;
 
-    public int mul(Rectangle a, Rectangle b) throws RemoteException;
+    public int areaMultiplication(Rectangle a, Rectangle b) throws RemoteException;
 
-    public int div(Rectangle a, Rectangle b) throws RemoteException;
+    public int areaDivision(Rectangle a, Rectangle b) throws RemoteException;
 }

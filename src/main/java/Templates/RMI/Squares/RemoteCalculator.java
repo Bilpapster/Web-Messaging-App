@@ -8,27 +8,27 @@ public class RemoteCalculator extends UnicastRemoteObject implements CalculatorI
         super();
     }
 
-    public int add(Rectangle a, Rectangle b) throws RemoteException {
-        int square_1_area = a.x * a.y;
-        int square_2_area = b.x * b.y;
-        return square_1_area + square_2_area;
+    public int areaAddition(Rectangle a, Rectangle b) throws RemoteException {
+        int squareAreaA = a.length * a.height;
+        int squareAreaB = b.length * b.height;
+        return squareAreaA + squareAreaB;
     }
 
-    public int sub(Rectangle a, Rectangle b) throws RemoteException {
-        int square_1_area = a.x * a.y;
-        int square_2_area = b.x * b.y;
-        return square_1_area - square_2_area;
+    public int areaSubtraction(Rectangle a, Rectangle b) throws RemoteException {
+        int squareAreaA = a.length * a.height;
+        int squareAreaB = b.length * b.height;
+        return squareAreaA - squareAreaB;
     }
 
-    public int mul(Rectangle a, Rectangle b) throws RemoteException {
-        int square_1_area = a.x * a.y;
-        int square_2_area = b.x * b.y;
-        return square_1_area * square_2_area;
+    public int areaMultiplication(Rectangle a, Rectangle b) throws RemoteException {
+        int squareAreaA = a.length * a.height;
+        int squareAreaB = b.length * b.height;
+        return squareAreaA * squareAreaB;
     }
 
-    public int div(Rectangle a, Rectangle b) throws RemoteException {
-        int square_1_area = a.x * a.y;
-        int square_2_area = b.x * b.y;
-        return square_1_area / square_2_area;
+    public int areaDivision(Rectangle a, Rectangle b) throws RemoteException {
+        int squareAreaA = a.length * a.height;
+        int squareAreaB = b.length * b.height;
+        return squareAreaA / squareAreaB;
     }
 }

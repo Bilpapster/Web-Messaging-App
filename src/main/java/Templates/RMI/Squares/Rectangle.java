@@ -1,11 +1,11 @@
 package Templates.RMI.Squares;
 
 public class Rectangle implements java.io.Serializable {
-    public int x;
-    public int y;
+    public int length;
+    public int height;
 
-    public Rectangle(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Rectangle(int length, int height) {
+        this.length = length;
+        this.height = height;
     }
 }

@@ -8,7 +8,7 @@ public class Server {
         try {
             RemoteCalculator stub = new RemoteCalculator();
             // create the RMI registry on port 5000
-            Registry rmiRegistry = LocateRegistry.createRegistry(5000);
+            Registry rmiRegistry = LocateRegistry.createRegistry(Constants.PORT_NUMBER);
             // path to access is rmi://localhost:5000/calculator
             rmiRegistry.rebind("calculator", stub);
             System.out.println("Server start");
