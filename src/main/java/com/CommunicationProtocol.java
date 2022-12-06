@@ -8,6 +8,8 @@ public class CommunicationProtocol {
     private static final int READ_MESSAGE   = 5;
     private static final int DELETE_MESSAGE = 6;
 
+    private static final int NUMBER_OF_TOKEN_DIGITS = 6;
+
     private MessagingServer parentServer;
     private MessagingClient connectedClient;
     private String errorMessage = null;
@@ -61,7 +63,7 @@ public class CommunicationProtocol {
             return false;
         }
 
-        if (functionID <= 0 || functionID > 5) {
+        if (functionID < 1 || functionID > 5) {
             errorMessage = "Error parsing the function ID. The provided parameter is " +
                     "out of bounds. Accepted values [1, 5]";
             return false;
@@ -70,7 +72,23 @@ public class CommunicationProtocol {
     }
 
     private String createAccount(String[] args) {
-        return "create account";
+
+        if (args.length < 4) return "Not enough arguments to create an account.";
+
+        String desiredUsername = args[3];
+
+        if (!isValidUsername(desiredUsername)) return "Invalid username";
+        if (!parentServer.isUsernameAvailable(desiredUsername)) return "Sorry, the user already exists";
+
+        int generatedToken;
+        synchronized (this) {
+            do {
+                generatedToken = this.generateRandomToken(NUMBER_OF_TOKEN_DIGITS);
+            } while (! parentServer.isTokenAvailable(generatedToken));
+
+            parentServer.createAccount(desiredUsername, generatedToken);
+        }
+        return Integer.toString(generatedToken);
     }
 
     private String showAccounts(String[] args) {
@@ -94,6 +112,15 @@ public class CommunicationProtocol {
     }
 
     private int generateRandomToken(int numberOfDigits) {
-        return 1;
+        int generatedToken = RandomEngine.getInstance().nextInt(10);
+        for (int digit = 2; digit <= numberOfDigits; digit++) {
+            generatedToken += RandomEngine.getInstance().nextInt() * 10 ^ (digit - 1);
+        }
+        return generatedToken;
+    }
+
+    private boolean isValidUsername(String username) {
+        // todo add actual implementation of the method, based on the naming requirements
+        return true;
     }
 }
