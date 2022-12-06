@@ -34,4 +34,18 @@ public class Account {
         this.messageBox.add(inboxMessage);
         this.messageIDs.add(messageID);
     }
+
+    public boolean existsMessageID(int messageIDToCheck) {
+        return messageIDs.contains(messageIDToCheck);
+    }
+
+    public String readMessage(int messageID) {
+        int messageIndex = 0;
+        for (Message message : messageBox) {
+            if (messageIDs.get(messageIndex++) == messageID) {
+                return message.read();
+            }
+        }
+        return "Message ID does not exist";
+    }
 }

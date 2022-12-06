@@ -99,7 +99,7 @@ public class CommunicationProtocol implements Serializable {
         if (! isArgumentInteger(args[3])) return errorMessage;
 
         int authenticationToken = Integer.parseInt(args[3]);
-        if (! isTokenValid(authenticationToken)) return errorMessage;
+        if (! tokenExists(authenticationToken)) return errorMessage;
 
         return parentServer.printActiveUsernames();
     }
@@ -109,14 +109,14 @@ public class CommunicationProtocol implements Serializable {
         if (! isArgumentInteger(args[3])) return errorMessage;
 
         int authenticationToken = Integer.parseInt(args[3]);
-        if (! isTokenValid(authenticationToken)) return errorMessage;
+        if (! tokenExists(authenticationToken)) return errorMessage;
 
         String receiver = args[4];
         if (!parentServer.usernameExists(receiver)) return (errorMessage = "User does not exist");
 
         String messageBody = args[5];
         parentServer.addMessage(authenticationToken, receiver, messageBody);
-            return "OK";
+        return "OK";
     }
 
     private String showInbox(String[] args) {
@@ -124,23 +124,40 @@ public class CommunicationProtocol implements Serializable {
         if (! isArgumentInteger(args[3])) return errorMessage;
 
         int authenticationToken = Integer.parseInt(args[3]);
-        if (! isTokenValid(authenticationToken)) return errorMessage;
+        if (! tokenExists(authenticationToken)) return errorMessage;
 
         return parentServer.printInboxMessages(authenticationToken);
     }
 
     private String readMessage(String[] args) {
-        return "read message";
+        if (! areArgumentsEnough(args, 5)) return errorMessage;
+
+        if (! isArgumentInteger(args[3])) return errorMessage;
+        int authenticationToken = Integer.parseInt(args[3]);
+        if (! tokenExists(authenticationToken)) return errorMessage;
+
+        if (! isArgumentInteger(args[4])) return errorMessage;
+        int messageID = Integer.parseInt(args[4]);
+        if (! messageIDExists(authenticationToken, messageID)) return errorMessage;
+
+        return parentServer.readMessage(authenticationToken, messageID);
     }
 
     private String deleteMessage(String[] args) {
         return "delete message";
     }
 
-    private boolean isTokenValid(int authenticationToken) {
-        if (parentServer.isTokenValid(authenticationToken)) return true;
+    private boolean tokenExists(int authenticationToken) {
+        if (parentServer.tokenExists(authenticationToken)) return true;
 
         errorMessage = "Invalid Auth Token";
+        return false;
+    }
+
+    private boolean messageIDExists(int authenticationToken, int MessageID) {
+        if (parentServer.messageIDExists(authenticationToken, MessageID)) return true;
+
+        errorMessage = "Message ID does not exist";
         return false;
     }
 

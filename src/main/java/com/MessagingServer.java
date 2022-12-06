@@ -19,16 +19,12 @@ public class MessagingServer {
         activeAuthenticationTokens.put(authenticationToken, new Account(username, authenticationToken));
     }
 
-    public boolean isTokenValid(int tokenToCheck) {
+    public boolean tokenExists(int tokenToCheck) {
         return activeAuthenticationTokens.containsKey(tokenToCheck);
     }
 
     public boolean isTokenAvailable(int tokenToCheck) {
         return !activeAuthenticationTokens.containsKey(tokenToCheck);
-    }
-
-    public boolean tokenExists(int tokenToCheck) {
-        return activeAuthenticationTokens.containsKey(tokenToCheck);
     }
 
     public boolean isUsernameAvailable(String usernameToCheck) {
@@ -39,10 +35,18 @@ public class MessagingServer {
         return activeUsernames.contains(usernameToCheck);
     }
 
+    public boolean messageIDExists(int authenticationToken, int messageIDToCheck) {
+        return activeAuthenticationTokens.get(authenticationToken).existsMessageID(messageIDToCheck);
+    }
+
     public void addMessage(int senderAuthenticationToken, String receiver, String messageBody) {
         String sender = activeAuthenticationTokens.get(senderAuthenticationToken).getUsername();
         Message message = new Message(sender, receiver, messageBody);
         this.activeAuthenticationTokens.get(senderAuthenticationToken).addMessage(message, ++messageCount);
+    }
+
+    public String readMessage(int authenticationToken, int messageID) {
+        return activeAuthenticationTokens.get(authenticationToken).readMessage(messageID);
     }
 
     public String printActiveUsernames() {

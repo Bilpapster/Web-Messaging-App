@@ -31,7 +31,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "(" + sender + ") " + body;
     }
 
     public String getMessageSignature() {
@@ -39,5 +39,10 @@ public class Message {
         output.append("from: ").append(sender);
         if (!this.isRead()) output.append("*");
         return output.toString();
+    }
+
+    public String read() {
+        this.isRead = true;
+        return this.toString();
     }
 }
