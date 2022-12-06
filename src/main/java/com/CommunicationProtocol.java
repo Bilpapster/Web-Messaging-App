@@ -1,6 +1,8 @@
 package com;
 
-public class CommunicationProtocol {
+import java.io.Serializable;
+
+public class CommunicationProtocol implements Serializable {
     private static final int CREATE_ACCOUNT = 1;
     private static final int SHOW_ACCOUNTS  = 2;
     private static final int SEND_MESSAGE   = 3;
@@ -103,7 +105,18 @@ public class CommunicationProtocol {
     }
 
     private String sendMessage(String[] args) {
-        return "send message";
+        if (! areArgumentsEnough(args, 6)) return errorMessage;
+        if (! isArgumentInteger(args[3])) return errorMessage;
+
+        int authenticationToken = Integer.parseInt(args[3]);
+        if (! isTokenValid(authenticationToken)) return errorMessage;
+
+        String receiver = args[4];
+        if (!parentServer.usernameExists(receiver)) return (errorMessage = "User does not exist");
+
+        String messageBody = args[5];
+        parentServer.addMessage(authenticationToken, receiver, messageBody);
+        return "OK";
     }
 
     private String showInbox(String[] args) {

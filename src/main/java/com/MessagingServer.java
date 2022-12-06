@@ -5,6 +5,7 @@ import java.util.*;
 public class MessagingServer {
     private Map<Integer, Account> activeAuthenticationTokens = new HashMap<>();
     private Set<String> activeUsernames = new HashSet<>();
+    private int messageCount = 0;
 
     public static void main(String[] args) {
         while (true) {
@@ -36,6 +37,12 @@ public class MessagingServer {
 
     public boolean usernameExists(String usernameToCheck) {
         return activeUsernames.contains(usernameToCheck);
+    }
+
+    public void addMessage(int senderAuthenticationToken, String receiver, String messageBody) {
+        String sender = activeAuthenticationTokens.get(senderAuthenticationToken).getUsername();
+        Message message = new Message(sender, receiver, messageBody);
+        this.activeAuthenticationTokens.get(senderAuthenticationToken).addMessage(message, ++messageCount);
     }
 
     public String printActiveUsernames() {
