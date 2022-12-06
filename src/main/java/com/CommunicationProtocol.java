@@ -10,7 +10,7 @@ public class CommunicationProtocol {
 
     private static final int NUMBER_OF_TOKEN_DIGITS = 6;
 
-    private MessagingServer parentServer;
+    private final MessagingServer parentServer;
     private MessagingClient connectedClient;
     private String errorMessage = null;
 
@@ -52,19 +52,21 @@ public class CommunicationProtocol {
     }
 
     private boolean defineFunctionID(String[] args) {
-        if (args.length < 3) {
-            errorMessage = "Error in arguments parsing. Not enough parameters to define the function ID.";
-            return false;
-        }
-        try {
-            functionID = Integer.parseInt(args[2]);
-        } catch (NumberFormatException e) {
-            errorMessage = "Error parsing the function ID. The provided parameter is not an integer.";
-            return false;
-        }
+//        if (args.length < 3) {
+//            errorMessage = "Error in arguments parsing. Not enough parameters to define the function ID.";
+//            return false;
+//        }
+//        try {
+//            functionID = Integer.parseInt(args[2]);
+//        } catch (NumberFormatException e) {
+//            errorMessage = "Error parsing the function ID. The provided argument is not an integer.";
+//            return false;
+//        }
 
+        if (! areArgumentsEnough(args, 3)) return false;
+        if (! isArgumentInteger(args[2])) return false;
         if (functionID < 1 || functionID > 5) {
-            errorMessage = "Error parsing the function ID. The provided parameter is " +
+            errorMessage = "Error parsing the function ID. The provided argument is " +
                     "out of bounds. Accepted values [1, 5]";
             return false;
         }
@@ -72,12 +74,11 @@ public class CommunicationProtocol {
     }
 
     private String createAccount(String[] args) {
-
-        if (args.length < 4) return "Not enough arguments to create an account.";
+        if (! areArgumentsEnough(args, 4)) return errorMessage;
 
         String desiredUsername = args[3];
 
-        if (!isValidUsername(desiredUsername)) return "Invalid username";
+        if (!isUsernameValid(desiredUsername)) return "Invalid username";
         if (!parentServer.isUsernameAvailable(desiredUsername)) return "Sorry, the user already exists";
 
         int generatedToken;
@@ -92,7 +93,13 @@ public class CommunicationProtocol {
     }
 
     private String showAccounts(String[] args) {
-        return "show accounts";
+        if (! areArgumentsEnough(args, 4)) return errorMessage;
+        if (! isArgumentInteger(args[3])) return errorMessage;
+
+        int authenticationToken = Integer.parseInt(args[3]);
+        if (! isTokenValid(authenticationToken)) return errorMessage;
+
+        return parentServer.printActiveUsernames();
     }
 
     private String sendMessage(String[] args) {
@@ -111,6 +118,13 @@ public class CommunicationProtocol {
         return "delete message";
     }
 
+    private boolean isTokenValid(int authenticationToken) {
+        if (parentServer.isTokenValid(authenticationToken)) return true;
+
+        errorMessage = "Invalid Auth Token";
+        return false;
+    }
+
     private int generateRandomToken(int numberOfDigits) {
         int generatedToken = RandomEngine.getInstance().nextInt(10);
         for (int digit = 2; digit <= numberOfDigits; digit++) {
@@ -119,8 +133,7 @@ public class CommunicationProtocol {
         return generatedToken;
     }
 
-    private boolean isValidUsername(String username) {
-
+    private boolean isUsernameValid(String username) {
         for (int charIndex = 0; charIndex <= username.length(); charIndex++) {
             if (! (isCharAlphanumeric(username.charAt(charIndex)) ||
                     isCharUnderscore(username.charAt(charIndex)))) return false;
@@ -136,5 +149,22 @@ public class CommunicationProtocol {
 
     private boolean isCharUnderscore(char characterToCheck) {
         return (characterToCheck =='_');
+    }
+
+    private boolean areArgumentsEnough(String[] args, int minimumLength) {
+        if (args.length >= minimumLength) return true;
+
+        errorMessage = "Not enough arguments. Check the function manual and try again";
+        return false;
+    }
+
+    private boolean isArgumentInteger(String argument) {
+        try {
+            Integer.parseInt(argument);
+            return true;
+        } catch (NumberFormatException e) {
+            errorMessage = "Parsing error. One or more provided argument(s) are not integer.";
+            return false;
+        }
     }
 }
