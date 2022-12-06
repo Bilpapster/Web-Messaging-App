@@ -31,6 +31,10 @@ public class Message {
 
     @Override
     public String toString() {
+        return super.toString();
+    }
+
+    public String getMessageSignature() {
         StringBuilder output = new StringBuilder();
         output.append("from: ").append(sender);
         if (!this.isRead()) output.append("*");
