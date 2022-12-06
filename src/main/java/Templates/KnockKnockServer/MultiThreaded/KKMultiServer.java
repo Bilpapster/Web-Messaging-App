@@ -47,6 +47,8 @@ public class KKMultiServer {
             System.exit(-1);
         }
 
+        System.out.println("Server ready");
+
         while (listening) {
             Socket clientSocket = serverSocket.accept();
             new KKMultiServerThread(clientSocket).start();

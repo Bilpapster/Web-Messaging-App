@@ -1,0 +1,99 @@
+package com;
+
+public class CommunicationProtocol {
+    private static final int CREATE_ACCOUNT = 1;
+    private static final int SHOW_ACCOUNTS  = 2;
+    private static final int SEND_MESSAGE   = 3;
+    private static final int SHOW_INBOX     = 4;
+    private static final int READ_MESSAGE   = 5;
+    private static final int DELETE_MESSAGE = 6;
+
+    private MessagingServer parentServer;
+    private MessagingClient connectedClient;
+    private String errorMessage = null;
+
+    private int functionID;
+
+    public CommunicationProtocol(MessagingServer parentServer) {
+        this.parentServer = parentServer;
+    }
+
+    public void connectClient(MessagingClient clientToConnect) {
+        this.connectedClient = clientToConnect;
+    }
+
+    public void freeClient() {
+        this.connectedClient = null;
+    }
+
+    public String handleClientRequest(String[] args) {
+        if (!defineFunctionID(args)) {
+            return errorMessage;
+        }
+
+        switch (functionID) {
+            case CREATE_ACCOUNT:
+                return createAccount(args);
+            case SHOW_ACCOUNTS:
+                return showAccounts(args);
+            case SEND_MESSAGE:
+                return sendMessage(args);
+            case SHOW_INBOX:
+                return showInbox(args);
+            case READ_MESSAGE:
+                return readMessage(args);
+            case DELETE_MESSAGE:
+                return deleteMessage(args);
+            default:
+                return "default";
+        }
+    }
+
+    private boolean defineFunctionID(String[] args) {
+        if (args.length < 3) {
+            errorMessage = "Error in arguments parsing. Not enough parameters to define the function ID.";
+            return false;
+        }
+        try {
+            functionID = Integer.parseInt(args[2]);
+        } catch (NumberFormatException e) {
+            errorMessage = "Error parsing the function ID. The provided parameter is not an integer.";
+            return false;
+        }
+
+        if (functionID <= 0 || functionID > 5) {
+            errorMessage = "Error parsing the function ID. The provided parameter is " +
+                    "out of bounds. Accepted values [1, 5]";
+            return false;
+        }
+        return true;
+    }
+
+    private String createAccount(String[] args) {
+        return "create account";
+    }
+
+    private String showAccounts(String[] args) {
+        return "show accounts";
+    }
+
+    private String sendMessage(String[] args) {
+        return "send message";
+    }
+
+    private String showInbox(String[] args) {
+        return "show inbox";
+    }
+
+    private String readMessage(String[] args) {
+        return "read message";
+    }
+
+    private String deleteMessage(String[] args) {
+        return "delete message";
+    }
+
+    private int generateRandomToken(int numberOfDigits) {
+        return 1;
+    }
+}
