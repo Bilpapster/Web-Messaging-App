@@ -48,4 +48,23 @@ public class Account {
         }
         return "Message ID does not exist";
     }
+
+    public String deleteMessage(int messageID) {
+        boolean found = false;
+        int messageIndex = 0;
+
+        for (int inboxMessageID : messageIDs) {
+            if (inboxMessageID == messageID) {
+                found = true;
+                break;
+            }
+            messageIndex++;
+        }
+
+        if (!found) return "Message ID does not exist";
+
+        messageBox.remove(messageIndex);
+        messageIDs.remove(messageIndex);
+        return "OK";
+    }
 }

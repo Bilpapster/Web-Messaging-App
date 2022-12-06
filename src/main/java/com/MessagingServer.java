@@ -49,6 +49,10 @@ public class MessagingServer {
         return activeAuthenticationTokens.get(authenticationToken).readMessage(messageID);
     }
 
+    public String deleteMessage(int authenticationToken, int messageID) {
+        return activeAuthenticationTokens.get(authenticationToken).deleteMessage(messageID);
+    }
+
     public String printActiveUsernames() {
         String[] usernames = (String []) activeUsernames.stream().sorted().toArray();
         int userID = 1;

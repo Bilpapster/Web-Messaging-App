@@ -144,7 +144,17 @@ public class CommunicationProtocol implements Serializable {
     }
 
     private String deleteMessage(String[] args) {
-        return "delete message";
+        if (! areArgumentsEnough(args, 5)) return errorMessage;
+
+        if (! isArgumentInteger(args[3])) return errorMessage;
+        int authenticationToken = Integer.parseInt(args[3]);
+        if (! tokenExists(authenticationToken)) return errorMessage;
+
+        if (! isArgumentInteger(args[4])) return errorMessage;
+        int messageID = Integer.parseInt(args[4]);
+        if (! messageIDExists(authenticationToken, messageID)) return errorMessage;
+
+        return parentServer.deleteMessage(authenticationToken, messageID);
     }
 
     private boolean tokenExists(int authenticationToken) {
