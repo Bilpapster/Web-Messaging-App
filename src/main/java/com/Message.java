@@ -28,4 +28,12 @@ public class Message {
     public String getBody() {
         return body;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder output = new StringBuilder();
+        output.append("from: ").append(sender);
+        if (!this.isRead()) output.append("*");
+        return output.toString();
+    }
 }
