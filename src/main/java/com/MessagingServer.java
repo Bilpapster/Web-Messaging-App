@@ -55,4 +55,8 @@ public class MessagingServer {
         }
         return output.toString();
     }
+
+    public String printInboxMessages(int userAuthenticationToken) {
+        return activeAuthenticationTokens.get(userAuthenticationToken).inboxToString();
+    }
 }

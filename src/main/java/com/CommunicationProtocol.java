@@ -116,11 +116,17 @@ public class CommunicationProtocol implements Serializable {
 
         String messageBody = args[5];
         parentServer.addMessage(authenticationToken, receiver, messageBody);
-        return "OK";
+            return "OK";
     }
 
     private String showInbox(String[] args) {
-        return "show inbox";
+        if (! areArgumentsEnough(args, 4)) return errorMessage;
+        if (! isArgumentInteger(args[3])) return errorMessage;
+
+        int authenticationToken = Integer.parseInt(args[3]);
+        if (! isTokenValid(authenticationToken)) return errorMessage;
+
+        return parentServer.printInboxMessages(authenticationToken);
     }
 
     private String readMessage(String[] args) {

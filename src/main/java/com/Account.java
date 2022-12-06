@@ -23,8 +23,9 @@ public class Account {
 
     public String inboxToString() {
         StringBuilder output = new StringBuilder();
+        int index = 0;
         for (Message message : messageBox) {
-            output.append(message.toString()).append("\n");
+            output.append(messageIDs.get(index++)).append(". ").append(message.getMessageSignature()).append("\n");
         }
         return output.toString();
     }
