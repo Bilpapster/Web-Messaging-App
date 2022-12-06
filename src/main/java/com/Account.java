@@ -1,5 +1,6 @@
 package com;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -7,11 +8,13 @@ public class Account {
     private String username;
     private int authToken;
     private List<Message> messageBox;
+    private List<Integer> messageIDs;
 
     public Account(String username, int authToken) {
         this.username = username;
         this.authToken = authToken;
-        this.messageBox = new Stack<>();
+        this.messageBox = new ArrayList<>();
+        this.messageIDs = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -26,7 +29,8 @@ public class Account {
         return output.toString();
     }
 
-    public void addMessage(Message inboxMessage) {
+    public void addMessage(Message inboxMessage, int messageID) {
         this.messageBox.add(inboxMessage);
+        this.messageIDs.add(messageID);
     }
 }
