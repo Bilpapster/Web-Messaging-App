@@ -120,7 +120,21 @@ public class CommunicationProtocol {
     }
 
     private boolean isValidUsername(String username) {
-        // todo add actual implementation of the method, based on the naming requirements
+
+        for (int charIndex = 0; charIndex <= username.length(); charIndex++) {
+            if (! (isCharAlphanumeric(username.charAt(charIndex)) ||
+                    isCharUnderscore(username.charAt(charIndex)))) return false;
+        }
         return true;
+    }
+
+    private boolean isCharAlphanumeric(char characterToCheck) {
+        return (characterToCheck >= 'A' && characterToCheck <= 'Z') ||
+                (characterToCheck >= 'a' && characterToCheck <= 'z') ||
+                (characterToCheck >= '1' && characterToCheck <= '9');
+    }
+
+    private boolean isCharUnderscore(char characterToCheck) {
+        return (characterToCheck =='_');
     }
 }
