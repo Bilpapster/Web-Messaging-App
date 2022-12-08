@@ -10,6 +10,9 @@ public class CommunicationProtocol implements Serializable {
     private static final int READ_MESSAGE   = 5;
     private static final int DELETE_MESSAGE = 6;
 
+    public static final int READ_MODE   = 0;
+    public static final int DELETE_MODE = -1;
+
     private static final int NUMBER_OF_TOKEN_DIGITS = 6;
 
     private final MessagingServer parentServer;
@@ -130,20 +133,14 @@ public class CommunicationProtocol implements Serializable {
     }
 
     private String readMessage(String[] args) {
-        if (! areArgumentsEnough(args, 5)) return errorMessage;
-
-        if (! isArgumentInteger(args[3])) return errorMessage;
-        int authenticationToken = Integer.parseInt(args[3]);
-        if (! tokenExists(authenticationToken)) return errorMessage;
-
-        if (! isArgumentInteger(args[4])) return errorMessage;
-        int messageID = Integer.parseInt(args[4]);
-        if (! messageIDExists(authenticationToken, messageID)) return errorMessage;
-
-        return parentServer.readMessage(authenticationToken, messageID);
+        return this.readOrDeleteMessage(args, READ_MODE);
     }
 
     private String deleteMessage(String[] args) {
+        return this.readOrDeleteMessage(args, DELETE_MODE);
+    }
+
+    private String readOrDeleteMessage(String[] args, int mode) {
         if (! areArgumentsEnough(args, 5)) return errorMessage;
 
         if (! isArgumentInteger(args[3])) return errorMessage;
@@ -154,7 +151,8 @@ public class CommunicationProtocol implements Serializable {
         int messageID = Integer.parseInt(args[4]);
         if (! messageIDExists(authenticationToken, messageID)) return errorMessage;
 
-        return parentServer.deleteMessage(authenticationToken, messageID);
+        if (mode == READ_MODE)          return parentServer.readMessage(authenticationToken, messageID);
+        /* elseif mode = DELETE */  return parentServer.deleteMessage(authenticationToken, messageID);
     }
 
     private boolean tokenExists(int authenticationToken) {
