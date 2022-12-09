@@ -1,5 +1,6 @@
 package com;
 
+import java.rmi.RemoteException;
 import java.util.*;
 
 public class MessagingServer {
@@ -7,11 +8,14 @@ public class MessagingServer {
     private Set<String> activeUsernames = new HashSet<>();
     private int messageCount = 0;
 
-    public static void main(String[] args) {
-        while (true) {
+    private RequestProcessor requestProcessor;
 
-            break;
-        }
+    public static void main(String[] args) {
+
+    }
+
+    public MessagingServer() throws RemoteException {
+        requestProcessor = new RequestProcessor(this);
     }
 
     public void createAccount(String username, int authenticationToken) {
@@ -42,7 +46,14 @@ public class MessagingServer {
     public void addMessage(int senderAuthenticationToken, String receiver, String messageBody) {
         String sender = activeAuthenticationTokens.get(senderAuthenticationToken).getUsername();
         Message message = new Message(sender, receiver, messageBody);
-        this.activeAuthenticationTokens.get(senderAuthenticationToken).addMessage(message, ++messageCount);
+
+
+        activeAuthenticationTokens.forEach((token, account) -> {
+            if (account.getUsername().equalsIgnoreCase(receiver)) {
+                activeAuthenticationTokens.get(token).addMessage(message, ++messageCount);
+                return;
+            }
+        });
     }
 
     public String readMessage(int authenticationToken, int messageID) {
@@ -54,12 +65,12 @@ public class MessagingServer {
     }
 
     public String printActiveUsernames() {
-        String[] usernames = (String []) activeUsernames.stream().sorted().toArray();
+//        String[] usernames = (String []) activeUsernames.stream().sorted().toArray();
         int userID = 1;
         StringBuilder output = new StringBuilder();
 
-        for (String username : usernames) {
-            output.append(userID++).append(". ").append(username);
+        for (String username : activeUsernames) {
+            output.append(userID++).append(". ").append(username).append('\n');
         }
         return output.toString();
     }

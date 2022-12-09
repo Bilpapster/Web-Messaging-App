@@ -1,24 +1,21 @@
 package com;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.rmi.registry.Registry;
+import java.rmi.registry.LocateRegistry;
 
 public class MessagingClient {
     private Account userAccount;
 
     public static void main(String[] args) throws IOException {
-
-
-
-
-        BufferedReader inputStream = new BufferedReader(new InputStreamReader(System.in));
-        String userInput;
-
-        while (!(userInput = inputStream.readLine()).equalsIgnoreCase("Bye")) {
-            System.out.println("Client: " + userInput);
+        try {
+            Registry rmiRegistry = LocateRegistry.getRegistry(5000);
+            CommunicationProtocol stub = (CommunicationProtocol) rmiRegistry.lookup("processor");
+            System.out.println(stub.processRequest(args));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
-
+// papster(126), papastva(252), maria(136), nikos(271)
 
 }

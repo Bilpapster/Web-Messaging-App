@@ -1,71 +1,79 @@
-Templates/SimpleThreads/SimpleThreadSynchronization.java
- Templates.SimpleThreads.SimpleThreadSynchronization
-Templates/RaceCondition/Unsynchronized.java
- Templates.RaceCondition.Unsynchronized
- Templates.RaceCondition.Unsynchronized$1
-Templates/EchoServer/TCPServer.java
- Templates.EchoServer.Connection
- Templates.EchoServer.TCPServer
-Templates/KnockKnockServer/SingleThreaded/KnockKnockServer.java
- Templates.KnockKnockServer.SingleThreaded.KnockKnockServer
-Templates/RMI/Calculator/Server.java
- Templates.RMI.Calculator.Server
-Templates/SimpleThreadedCS/Server.java
- Templates.SimpleThreadedCS.Server
- Templates.SimpleThreadedCS.Server$ClientHandler
+Templates/RMI/Squares/Server.java
+ Templates.RMI.Squares.Server
+Templates/RMI/Squares/Constants.java
+ Templates.RMI.Squares.Constants
 Templates/KnockKnockServer/SingleThreaded/KnockKnockProtocol.java
  Templates.KnockKnockServer.SingleThreaded.KnockKnockProtocol
-Templates/KnockKnockServer/MultiThreaded/KKMultiServerThread.java
- Templates.KnockKnockServer.MultiThreaded.KKMultiServerThread
-Templates/MultiThreadedFibonacci/ServerThread.java
- Templates.MultiThreadedFibonacci.ServerThread
-Templates/SimpleThreadedCS/Client.java
- Templates.SimpleThreadedCS.Client
-Templates/MultiThreadedFibonacci/Fibonacci.java
- Templates.MultiThreadedFibonacci.Fibonacci
-com/Account.java
- com.Account
-Templates/MultiThreadedFibonacci/Client.java
- Templates.MultiThreadedFibonacci.Client
-Templates/RaceCondition/Synchronized.java
- Templates.RaceCondition.Synchronized
- Templates.RaceCondition.Synchronized$1
-Templates/KnockKnockServer/SingleThreaded/KnockKnockClient.java
- Templates.KnockKnockServer.SingleThreaded.KnockKnockClient
-Templates/MultiThreadedFibonacci/Server.java
- Templates.MultiThreadedFibonacci.Server
-Templates/EchoServer/TCPClient.java
- Templates.EchoServer.TCPClient
-Templates/KnockKnockServer/MultiThreaded/KKMultiServer.java
- Templates.KnockKnockServer.MultiThreaded.KKMultiServer
-Templates/KnockKnockServer/MultiThreaded/KnockKnockProtocol.java
- Templates.KnockKnockServer.MultiThreaded.KnockKnockProtocol
 Templates/RaceCondition/SynchronizedImproved.java
  Templates.RaceCondition.SynchronizedImproved
  Templates.RaceCondition.SynchronizedImproved$1
-Templates/RMI/Squares/Server.java
- Templates.RMI.Squares.Server
-com/Message.java
- com.Message
-Templates/RMI/Squares/Constants.java
- Templates.RMI.Squares.Constants
-Templates/RMI/Calculator/CalculatorInt.java
- Templates.RMI.Calculator.CalculatorInt
-Templates/RMI/Squares/Client.java
- Templates.RMI.Squares.Client
-Templates/RMI/Calculator/Client.java
- Templates.RMI.Calculator.Client
-Templates/RMI/Squares/CalculatorInt.java
- Templates.RMI.Squares.CalculatorInt
-Templates/RMI/Calculator/RemoteCalculator.java
- Templates.RMI.Calculator.RemoteCalculator
+Templates/KnockKnockServer/MultiThreaded/KKMultiServerThread.java
+ Templates.KnockKnockServer.MultiThreaded.KKMultiServerThread
+Templates/SimpleThreadedCS/Client.java
+ Templates.SimpleThreadedCS.Client
+Templates/KnockKnockServer/MultiThreaded/KKMultiServer.java
+ Templates.KnockKnockServer.MultiThreaded.KKMultiServer
 Templates/RMI/Squares/Rectangle.java
  Templates.RMI.Squares.Rectangle
 Templates/RMI/Squares/RemoteCalculator.java
  Templates.RMI.Squares.RemoteCalculator
-Templates/KnockKnockServer/MultiThreaded/KnockKnockClient.java
- Templates.KnockKnockServer.MultiThreaded.KnockKnockClient
+Templates/EchoServer/TCPClient.java
+ Templates.EchoServer.TCPClient
+Templates/KnockKnockServer/MultiThreaded/KnockKnockProtocol.java
+ Templates.KnockKnockServer.MultiThreaded.KnockKnockProtocol
+Templates/MultiThreadedFibonacci/Server.java
+ Templates.MultiThreadedFibonacci.Server
 com/MessagingServer.java
  com.MessagingServer
+Templates/RaceCondition/Unsynchronized.java
+ Templates.RaceCondition.Unsynchronized
+ Templates.RaceCondition.Unsynchronized$1
+com/RandomEngine.java
+ com.RandomEngine
+com/Server.java
+ com.Server
+com/Account.java
+ com.Account
+Templates/RMI/Calculator/Client.java
+ Templates.RMI.Calculator.Client
+Templates/RMI/Calculator/RemoteCalculator.java
+ Templates.RMI.Calculator.RemoteCalculator
+Templates/SimpleThreads/SimpleThreadSynchronization.java
+ Templates.SimpleThreads.SimpleThreadSynchronization
+Templates/SimpleThreadedCS/Server.java
+ Templates.SimpleThreadedCS.Server
+ Templates.SimpleThreadedCS.Server$ClientHandler
+Templates/KnockKnockServer/SingleThreaded/KnockKnockServer.java
+ Templates.KnockKnockServer.SingleThreaded.KnockKnockServer
+com/Message.java
+ com.Message
+Templates/EchoServer/TCPServer.java
+ Templates.EchoServer.Connection
+ Templates.EchoServer.TCPServer
+Templates/RaceCondition/Synchronized.java
+ Templates.RaceCondition.Synchronized
+ Templates.RaceCondition.Synchronized$1
+Templates/RMI/Calculator/CalculatorInt.java
+ Templates.RMI.Calculator.CalculatorInt
+Templates/MultiThreadedFibonacci/Fibonacci.java
+ Templates.MultiThreadedFibonacci.Fibonacci
+com/CommunicationProtocol.java
+ com.CommunicationProtocol
+Templates/MultiThreadedFibonacci/ServerThread.java
+ Templates.MultiThreadedFibonacci.ServerThread
+Templates/RMI/Calculator/Server.java
+ Templates.RMI.Calculator.Server
+Templates/RMI/Squares/Client.java
+ Templates.RMI.Squares.Client
+Templates/KnockKnockServer/MultiThreaded/KnockKnockClient.java
+ Templates.KnockKnockServer.MultiThreaded.KnockKnockClient
+Templates/KnockKnockServer/SingleThreaded/KnockKnockClient.java
+ Templates.KnockKnockServer.SingleThreaded.KnockKnockClient
+Templates/MultiThreadedFibonacci/Client.java
+ Templates.MultiThreadedFibonacci.Client
+Templates/RMI/Squares/CalculatorInt.java
+ Templates.RMI.Squares.CalculatorInt
+com/RequestProcessor.java
+ com.RequestProcessor
 com/MessagingClient.java
  com.MessagingClient
