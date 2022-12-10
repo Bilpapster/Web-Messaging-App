@@ -59,21 +59,21 @@ Templates/MultiThreadedFibonacci/Fibonacci.java
  Templates.MultiThreadedFibonacci.Fibonacci
 com/CommunicationProtocol.java
  com.CommunicationProtocol
-Templates/MultiThreadedFibonacci/ServerThread.java
- Templates.MultiThreadedFibonacci.ServerThread
+com/MessagingClient.java
+ com.MessagingClient
 Templates/RMI/Calculator/Server.java
  Templates.RMI.Calculator.Server
 Templates/RMI/Squares/Client.java
  Templates.RMI.Squares.Client
 Templates/KnockKnockServer/MultiThreaded/KnockKnockClient.java
  Templates.KnockKnockServer.MultiThreaded.KnockKnockClient
-Templates/KnockKnockServer/SingleThreaded/KnockKnockClient.java
- Templates.KnockKnockServer.SingleThreaded.KnockKnockClient
+com/RequestProcessor.java
+ com.RequestProcessor
 Templates/MultiThreadedFibonacci/Client.java
  Templates.MultiThreadedFibonacci.Client
 Templates/RMI/Squares/CalculatorInt.java
  Templates.RMI.Squares.CalculatorInt
-com/RequestProcessor.java
- com.RequestProcessor
-com/MessagingClient.java
- com.MessagingClient
+Templates/MultiThreadedFibonacci/ServerThread.java
+ Templates.MultiThreadedFibonacci.ServerThread
+Templates/KnockKnockServer/SingleThreaded/KnockKnockClient.java
+ Templates.KnockKnockServer.SingleThreaded.KnockKnockClient

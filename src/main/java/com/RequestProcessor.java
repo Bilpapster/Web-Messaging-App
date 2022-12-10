@@ -14,24 +14,15 @@ public class RequestProcessor extends UnicastRemoteObject implements Communicati
     public static final int READ_MODE   = 0;
     public static final int DELETE_MODE = -1;
 
-    private static final int NUMBER_OF_TOKEN_DIGITS = 6;
+    private static final int NUMBER_OF_TOKEN_DIGITS = 4;
 
     private final MessagingServer parentServer;
-    private MessagingClient connectedClient;
     private String errorMessage = null;
 
     private int functionID;
 
     public RequestProcessor(MessagingServer parentServer) throws RemoteException {
         this.parentServer = parentServer;
-    }
-
-    public void connectClient(MessagingClient clientToConnect) {
-        this.connectedClient = clientToConnect;
-    }
-
-    public void freeClient() {
-        this.connectedClient = null;
     }
 
     public String processRequest(String[] args) throws RemoteException{
@@ -58,17 +49,6 @@ public class RequestProcessor extends UnicastRemoteObject implements Communicati
     }
 
     private boolean defineFunctionID(String[] args) {
-//        if (args.length < 3) {
-//            errorMessage = "Error in arguments parsing. Not enough parameters to define the function ID.";
-//            return false;
-//        }
-//        try {
-//            functionID = Integer.parseInt(args[2]);
-//        } catch (NumberFormatException e) {
-//            errorMessage = "Error parsing the function ID. The provided argument is not an integer.";
-//            return false;
-//        }
-
         if (! areArgumentsEnough(args, 3)) return false;
         if (! isArgumentInteger(args[2])) return false;
         functionID = Integer.parseInt(args[2]);
@@ -85,7 +65,7 @@ public class RequestProcessor extends UnicastRemoteObject implements Communicati
 
         String desiredUsername = args[3];
 
-        if (!isUsernameValid(desiredUsername)) return "Invalid username";
+        if (!isUsernameValid(desiredUsername)) return "Invalid Username";
         if (!parentServer.isUsernameAvailable(desiredUsername)) return "Sorry, the user already exists";
 
         int generatedToken;
@@ -172,14 +152,16 @@ public class RequestProcessor extends UnicastRemoteObject implements Communicati
     }
 
     private int generateRandomToken(int numberOfDigits) {
-        int generatedToken = RandomEngine.getInstance().nextInt(10);
+        int generatedToken = RandomEngine.getInstance().nextInt(9) + 1;
         for (int digit = 2; digit <= numberOfDigits; digit++) {
-            generatedToken += RandomEngine.getInstance().nextInt(10) * 10 ^ (digit - 1);
+            generatedToken += (RandomEngine.getInstance().nextInt(9) + 1) * Math.pow(10, digit - 1);
         }
         return generatedToken;
     }
 
     private boolean isUsernameValid(String username) {
+        if (username.equalsIgnoreCase("")) return false;
+
         for (int charIndex = 0; charIndex < username.length(); charIndex++) {
             if (! (isCharAlphanumeric(username.charAt(charIndex)) ||
                     isCharUnderscore(username.charAt(charIndex)))) return false;
@@ -190,7 +172,7 @@ public class RequestProcessor extends UnicastRemoteObject implements Communicati
     private boolean isCharAlphanumeric(char characterToCheck) {
         return (characterToCheck >= 'A' && characterToCheck <= 'Z') ||
                 (characterToCheck >= 'a' && characterToCheck <= 'z') ||
-                (characterToCheck >= '1' && characterToCheck <= '9');
+                (characterToCheck >= '0' && characterToCheck <= '9');
     }
 
     private boolean isCharUnderscore(char characterToCheck) {
