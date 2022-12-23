@@ -15,22 +15,7 @@ public class ShowInboxTest extends RequestProcessorTest {
 
     public ShowInboxTest() throws RemoteException {
         super();
-
-        testUsernames.add("giraffe");
-        testUsernames.add("elephant");
-        testUsernames.add("zebra");
-        testUsernames.add("lion");
-        testUsernames.add("hippo");
-        testUsernames.add("rino");
-        testUsernames.add("ant");
-        testUsernames.add("cat");
-        testUsernames.add("dog");
-        testUsernames.add("spider");
-        testUsernames.add("horse");
-        testUsernames.add("dinosaur");
-        testUsernames.add("fly");
-        testUsernames.add("rabbit");
-        testUsernames.add("turtle");
+        initializeTestUsernames();
 
         for (String testUsername : testUsernames) {
             argsArray.add(new String[]{ip, portAsString, "1", testUsername});
@@ -84,6 +69,43 @@ public class ShowInboxTest extends RequestProcessorTest {
         System.out.println(messageCount);
     }
 
+    private void initializeTestUsernames() {
+        testUsernames.add("giraffe");
+        testUsernames.add("elephant");
+        testUsernames.add("zebra");
+        testUsernames.add("lion");
+        testUsernames.add("hippo");
+        testUsernames.add("rino");
+        testUsernames.add("ant");
+        testUsernames.add("cat");
+        testUsernames.add("dog");
+        testUsernames.add("spider");
+        testUsernames.add("horse");
+        testUsernames.add("dinosaur");
+        testUsernames.add("fly");
+        testUsernames.add("rabbit");
+        testUsernames.add("turtle");
+        testUsernames.add("whale");
+        testUsernames.add("chicken");
+        testUsernames.add("rooster");
+        testUsernames.add("squirrel");
+        testUsernames.add("sparrow");
+        testUsernames.add("crab");
+        testUsernames.add("peacock");
+        testUsernames.add("panda");
+        testUsernames.add("bull");
+        testUsernames.add("shark");
+        testUsernames.add("owl");
+        testUsernames.add("deer");
+        testUsernames.add("reindeer");
+        testUsernames.add("sheep");
+        testUsernames.add("dolphin");
+        testUsernames.add("wolf");
+        testUsernames.add("fox");
+        testUsernames.add("alpaca");
+        testUsernames.add("kangaroo");
+        testUsernames.add("parrot");
+    }
 }
 
 
