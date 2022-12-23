@@ -5,15 +5,15 @@ import com.RequestProcessor;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class RequestProcessorTest {
     protected RequestProcessor requestProcessor;
-    protected List<String[]> argsArray = new ArrayList<>();
-    protected Map<Integer, String> activeUsers = new HashMap<>();
+    protected final List<String[]> argsArray = new ArrayList<>();
+    protected final Map<Integer, String> activeUsers = new HashMap<>();
+    protected final String ip = "localhost";
+    protected final String portAsString = "5000";
+    protected final Set<String> testUsernames = new HashSet<>();
 
     public RequestProcessorTest() {
         try {

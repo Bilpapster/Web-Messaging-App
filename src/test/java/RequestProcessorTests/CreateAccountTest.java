@@ -11,13 +11,17 @@ import java.util.List;
 public class CreateAccountTest extends RequestProcessorTest {
     @Test
     void validUsernamesTest() throws RemoteException {
-        argsArray.add(new String[]{"localhost", "5000", "1", "papster"});
-        argsArray.add(new String[]{"localhost", "5000", "1", "USERNAME"});
-        argsArray.add(new String[]{"localhost", "5000", "1", "____papastva"});
-        argsArray.add(new String[]{"localhost", "5000", "1", "m_ar____ia"});
-        argsArray.add(new String[]{"localhost", "5000", "1", "nIKos______0"});
-        argsArray.add(new String[]{"localhost", "5000", "1", "mike_123___456"});
-        argsArray.add(new String[]{"localhost", "5000", "1", "123123824093"});
+        testUsernames.add("papster");
+        testUsernames.add("USERNAME");
+        testUsernames.add("____papastva");
+        testUsernames.add("m_ar____ia");
+        testUsernames.add("nIKos______0");
+        testUsernames.add("mike_123___456");
+        testUsernames.add("123123824093");
+
+        for (String testUsername : testUsernames) {
+            argsArray.add(new String[]{ip, portAsString, "1", testUsername});
+        }
 
         for (String[] args : argsArray) {
             String serverResponse = requestProcessor.processRequest(args);

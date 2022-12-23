@@ -3,17 +3,10 @@ package RequestProcessorTests;
 import org.junit.jupiter.api.Test;
 
 import java.rmi.RemoteException;
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShowAccountsTest extends RequestProcessorTest {
-    private final String ip = "localhost";
-    private final String portAsString = "5000";
-
-    private final Set<String> testUsernames = new HashSet<>();
-
     public ShowAccountsTest() throws RemoteException {
         super();
 
