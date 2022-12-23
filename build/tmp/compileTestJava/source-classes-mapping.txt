@@ -6,3 +6,5 @@ RequestProcessorTests/CreateAccountTest.java
  RequestProcessorTests.CreateAccountTest
 RequestProcessorTests/SendMessageTest.java
  RequestProcessorTests.SendMessageTest
+RequestProcessorTests/ShowInboxTest.java
+ RequestProcessorTests.ShowInboxTest
