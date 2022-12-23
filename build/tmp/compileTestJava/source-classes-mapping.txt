@@ -2,3 +2,5 @@ RequestProcessorTests/RequestProcessorTest.java
  RequestProcessorTests.RequestProcessorTest
 RequestProcessorTests/CreateAccountTest.java
  RequestProcessorTests.CreateAccountTest
+RequestProcessorTests/ShowAccountsTest.java
+ RequestProcessorTests.ShowAccountsTest

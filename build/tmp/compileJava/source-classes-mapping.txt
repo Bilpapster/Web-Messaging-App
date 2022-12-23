@@ -23,8 +23,8 @@ Templates/KnockKnockServer/MultiThreaded/KnockKnockProtocol.java
  Templates.KnockKnockServer.MultiThreaded.KnockKnockProtocol
 Templates/MultiThreadedFibonacci/Server.java
  Templates.MultiThreadedFibonacci.Server
-com/MessagingServer.java
- com.MessagingServer
+Templates/RMI/Squares/CalculatorInt.java
+ Templates.RMI.Squares.CalculatorInt
 Templates/RaceCondition/Unsynchronized.java
  Templates.RaceCondition.Unsynchronized
  Templates.RaceCondition.Unsynchronized$1
@@ -32,8 +32,8 @@ com/RandomEngine.java
  com.RandomEngine
 Templates/KnockKnockServer/SingleThreaded/KnockKnockClient.java
  Templates.KnockKnockServer.SingleThreaded.KnockKnockClient
-com/Account.java
- com.Account
+Templates/MultiThreadedFibonacci/ServerThread.java
+ Templates.MultiThreadedFibonacci.ServerThread
 Templates/RMI/Calculator/Client.java
  Templates.RMI.Calculator.Client
 Templates/RMI/Calculator/RemoteCalculator.java
@@ -71,9 +71,9 @@ com/RequestProcessor.java
  com.RequestProcessor
 Templates/MultiThreadedFibonacci/Client.java
  Templates.MultiThreadedFibonacci.Client
-Templates/RMI/Squares/CalculatorInt.java
- Templates.RMI.Squares.CalculatorInt
-Templates/MultiThreadedFibonacci/ServerThread.java
- Templates.MultiThreadedFibonacci.ServerThread
+com/MessagingServer.java
+ com.MessagingServer
+com/Account.java
+ com.Account
 com/MessagingClient.java
  com.MessagingClient
