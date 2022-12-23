@@ -4,3 +4,5 @@ RequestProcessorTests/ShowAccountsTest.java
  RequestProcessorTests.ShowAccountsTest
 RequestProcessorTests/CreateAccountTest.java
  RequestProcessorTests.CreateAccountTest
+RequestProcessorTests/SendMessageTest.java
+ RequestProcessorTests.SendMessageTest
